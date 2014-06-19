@@ -24,9 +24,9 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.ciscavate.cjwizard.pagetemplates.TitledPageTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This demo class uses a JDialog to hold the wizard.
@@ -40,7 +40,7 @@ public class WizardTest extends JDialog {
    /**
     * Commons logging log instance
     */
-   private static Log log = LogFactory.getLog(WizardTest.class);
+   private static Logger log = LoggerFactory.getLogger(WizardTest.class);
    
    /**
     * @param args

@@ -27,11 +27,11 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.ciscavate.cjwizard.pagetemplates.DefaultPageTemplate;
 import org.ciscavate.cjwizard.pagetemplates.PageTemplate;
 import org.ciscavate.utilities.ExceptionUtilities;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This is the primary "Wizard" class.  It must be instantiated with a
@@ -45,7 +45,7 @@ public class WizardContainer extends JPanel implements WizardController {
    /**
     * Commons logging log instance
     */
-   private static Log log = LogFactory.getLog(WizardContainer.class);
+   private static Logger log = LoggerFactory.getLogger(WizardContainer.class);
    
    /**
     * Storage for all the collected information.

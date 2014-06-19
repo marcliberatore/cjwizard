@@ -17,10 +17,10 @@ package org.ciscavate.cjwizard.pagetemplates;
 
 import java.awt.CardLayout;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.ciscavate.cjwizard.WizardContainer;
 import org.ciscavate.cjwizard.WizardPage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This class provides a point at which third-party code can
@@ -37,7 +37,7 @@ public class DefaultPageTemplate extends PageTemplate {
    /**
     * Commons logging log instance
     */
-   private static Log log = LogFactory.getLog(WizardContainer.class);
+   private static Logger log = LoggerFactory.getLogger(WizardContainer.class);
    
    private final CardLayout _layout = new CardLayout();
    

@@ -15,6 +15,9 @@
  */
 package org.ciscavate.cjwizard;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.ContainerEvent;
@@ -30,8 +33,6 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.text.JTextComponent;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  * @author rcreswick
@@ -42,7 +43,7 @@ public abstract class WizardPage extends JPanel {
    /**
     * Commons logging log instance
     */
-   private static Log log = LogFactory.getLog(WizardPage.class);
+   private static Logger log = LoggerFactory.getLogger(WizardPage.class);
    
    /**
     * Count of WizardPages, used to get unique IDs
