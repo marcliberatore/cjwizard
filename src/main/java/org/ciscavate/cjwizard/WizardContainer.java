@@ -19,6 +19,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
@@ -46,6 +47,8 @@ public class WizardContainer extends JPanel implements WizardController {
     * Commons logging log instance
     */
    private static Logger log = LoggerFactory.getLogger(WizardContainer.class);
+   
+   private static ResourceBundle msg = ResourceBundle.getBundle("i18n.cjwizard");
    
    /**
     * Storage for all the collected information.
@@ -83,7 +86,7 @@ public class WizardContainer extends JPanel implements WizardController {
     */
    private JPanel _extraButtonPanel;
    
-   private final AbstractAction _prevAction = new AbstractAction("< Prev"){
+   private final AbstractAction _prevAction = new AbstractAction(msg.getString("PREVIOUS")){
       {
          setEnabled(false);
       }
@@ -93,14 +96,14 @@ public class WizardContainer extends JPanel implements WizardController {
       }
    };
    
-   private final AbstractAction _nextAction = new AbstractAction("Next >"){
+   private final AbstractAction _nextAction = new AbstractAction(msg.getString("NEXT")){
       @Override
       public void actionPerformed(ActionEvent e) {
          next();
       }
    };
 
-   private final AbstractAction _finishAction = new AbstractAction("Finish"){
+   private final AbstractAction _finishAction = new AbstractAction(msg.getString("FINISH")){
       {
          setEnabled(false);
       }
@@ -110,7 +113,7 @@ public class WizardContainer extends JPanel implements WizardController {
       }
    };
    
-   private final AbstractAction _cancelAction = new AbstractAction("Cancel"){
+   private final AbstractAction _cancelAction = new AbstractAction(msg.getString("CANCEL")){
       @Override
       public void actionPerformed(ActionEvent e) {
          cancel();

@@ -155,7 +155,7 @@ public abstract class WizardPage extends JPanel {
       } else if (c instanceof JList){
          val = ((JList) c).getSelectedValues();
       } else {
-         log.warn("Unknown component: "+c);
+         log.warn("Unknown component: {}", c);
       }
       
       return val;
@@ -197,7 +197,7 @@ public abstract class WizardPage extends JPanel {
          }
          list.setSelectedIndices(indices);
       } else {
-         log.warn("Unknown component: "+c);
+         log.warn("Unknown component: {}", c);
       }
       
    }
@@ -283,7 +283,7 @@ public abstract class WizardPage extends JPanel {
        */
       @Override
       public void componentAdded(ContainerEvent e) {
-         log.trace("component added: "+e.getChild());
+         log.trace("component added: {}", e.getChild());
          Component newComp = e.getChild();
          
          storeIfNamed(newComp);
@@ -319,7 +319,7 @@ public abstract class WizardPage extends JPanel {
        */
       @Override
       public void componentRemoved(ContainerEvent e) {
-         log.trace("component removed: "+e.getChild());
+         log.trace("component removed: {}", e.getChild());
          _namedComponents.remove(e.getChild());
       }
    }
