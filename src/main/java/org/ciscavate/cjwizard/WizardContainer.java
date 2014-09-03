@@ -16,17 +16,17 @@
 package org.ciscavate.cjwizard;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.util.LinkedList;
 import java.util.List;
-
+import java.util.ResourceBundle;
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
 import org.ciscavate.cjwizard.pagetemplates.DefaultPageTemplate;
 import org.ciscavate.cjwizard.pagetemplates.PageTemplate;
 import org.ciscavate.utilities.ExceptionUtilities;
@@ -46,6 +46,8 @@ public class WizardContainer extends JPanel implements WizardController {
     * Commons logging log instance
     */
    private static Logger log = LoggerFactory.getLogger(WizardContainer.class);
+   
+   private static ResourceBundle msg = ResourceBundle.getBundle("i18n.cjwizard");
    
    /**
     * Storage for all the collected information.
@@ -83,7 +85,7 @@ public class WizardContainer extends JPanel implements WizardController {
     */
    private JPanel _extraButtonPanel;
    
-   private final AbstractAction _prevAction = new AbstractAction("< Prev"){
+   private final AbstractAction _prevAction = new AbstractAction(msg.getString("PREVIOUS")){
       {
          setEnabled(false);
       }
@@ -93,14 +95,14 @@ public class WizardContainer extends JPanel implements WizardController {
       }
    };
    
-   private final AbstractAction _nextAction = new AbstractAction("Next >"){
+   private final AbstractAction _nextAction = new AbstractAction(msg.getString("NEXT")){
       @Override
       public void actionPerformed(ActionEvent e) {
          next();
       }
    };
 
-   private final AbstractAction _finishAction = new AbstractAction("Finish"){
+   private final AbstractAction _finishAction = new AbstractAction(msg.getString("FINISH")){
       {
          setEnabled(false);
       }
@@ -110,7 +112,7 @@ public class WizardContainer extends JPanel implements WizardController {
       }
    };
    
-   private final AbstractAction _cancelAction = new AbstractAction("Cancel"){
+   private final AbstractAction _cancelAction = new AbstractAction(msg.getString("CANCEL")){
       @Override
       public void actionPerformed(ActionEvent e) {
          cancel();
@@ -148,6 +150,18 @@ public class WizardContainer extends JPanel implements WizardController {
       final JButton nextBtn = new JButton(_nextAction);
       final JButton finishBtn = new JButton(_finishAction);
       final JButton cancelBtn = new JButton(_cancelAction);
+      
+      Dimension preferredMax = prevBtn.getPreferredSize();
+      for (JButton b : new JButton[]{nextBtn, finishBtn, cancelBtn}) {
+          Dimension bp = b.getPreferredSize();
+          preferredMax.setSize(Math.max(preferredMax.getWidth(), bp.getWidth()),
+                  Math.max(preferredMax.getHeight(), bp.getHeight()));
+      }
+      
+      prevBtn.setPreferredSize(preferredMax);
+      nextBtn.setPreferredSize(preferredMax);
+      finishBtn.setPreferredSize(preferredMax);
+      cancelBtn.setPreferredSize(preferredMax);
       
       _extraButtonPanel = new JPanel();
       _extraButtonPanel.setLayout(

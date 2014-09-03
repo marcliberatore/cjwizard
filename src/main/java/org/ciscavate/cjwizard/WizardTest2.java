@@ -64,19 +64,19 @@ public class WizardTest2 extends JDialog {
       wc.addWizardListener(new WizardListener(){
          @Override
          public void onCanceled(List<WizardPage> path, WizardSettings settings) {
-            log.debug("settings: "+wc.getSettings());
+            log.debug("settings: {}", wc.getSettings());
             WizardTest2.this.dispose();
          }
 
          @Override
          public void onFinished(List<WizardPage> path, WizardSettings settings) {
-            log.debug("settings: "+wc.getSettings());
+            log.debug("settings: {}", wc.getSettings());
             WizardTest2.this.dispose();
          }
 
          @Override
          public void onPageChanged(WizardPage newPage, List<WizardPage> path) {
-            log.debug("settings: "+wc.getSettings());
+            log.debug("settings: {}", wc.getSettings());
             // Set the dialog title to match the description of the new page:
             WizardTest2.this.setTitle(newPage.getDescription());
          }
@@ -101,7 +101,7 @@ public class WizardTest2 extends JDialog {
       @Override
       public WizardPage createPage(List<WizardPage> path,
             WizardSettings settings) {
-         log.debug("creating page "+path.size());
+         log.debug("creating page {}", path.size());
          
          // Get the next page to display.  The path is the list of all wizard
          // pages that the user has proceeded through from the start of the
@@ -116,7 +116,7 @@ public class WizardTest2 extends JDialog {
          // In fact, we can do arbitrarily complex computation to determine
          // the next wizard page.
          
-         log.debug("Returning page: "+page);
+         log.debug("Returning page: {}", page);
          return page;
       }
 
